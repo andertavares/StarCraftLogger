@@ -11,14 +11,23 @@
 
 using namespace std;
 using namespace BWAPI;
+using namespace scutil;
 
-Logging* Logging::getInstance() {
-    static Logging* instance = new Logging();
-    return instance;
+Logging& Logging::getInstance() {
+	static Logging instance;
+	return instance;
 }
 
 Logging::Logging() : logLevel(Logging::INFO){
 	
+}
+
+int Logging::getLogLevel() {
+	return logLevel;
+}
+
+void Logging::setLogLevel(int level) {
+	logLevel = level;
 }
 
 void Logging::log(const char * msg, ...) {
